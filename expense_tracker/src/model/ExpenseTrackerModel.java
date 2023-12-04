@@ -86,18 +86,28 @@ public class ExpenseTrackerModel {
     return false;
   }
 
+  /**
+   * @return the number of registered listeners
+   */
   public int numberOfListeners() {
-    // Return the number of listeners
     return listeners.size();
   }
 
+  /**
+   * @return If the listener is registered, returns true.
+   *         If not returns false
+   */
   public boolean containsListener(ExpenseTrackerModelListener listener) {
-    // Check if the input listener is contained in the list of registered listeners
+    // returns true if the listener is registered
     return listeners.contains(listener);
   }
 
+  /**
+   * Update each listener in the registered listeners list when
+   * the state changed
+   */
   protected void stateChanged() {
-    // update each listener in the list of registered listerners when state changed
+    // loop through each registered listener and update
     for (ExpenseTrackerModelListener listener : listeners) {
       listener.update(this);
     }
