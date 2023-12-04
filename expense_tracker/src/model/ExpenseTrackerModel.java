@@ -76,6 +76,7 @@ public class ExpenseTrackerModel {
       //
       // TODO
       if (listener != null && !containsListener(listener)){
+        listeners.add(listener);
         return true;
       }
       return false;
@@ -103,5 +104,8 @@ public class ExpenseTrackerModel {
       for (ExpenseTrackerModelListener listener: listeners){
         listener.update(this);
       }
+  }
+  public void triggerStateChanged(){
+    stateChanged();
   }
 }
